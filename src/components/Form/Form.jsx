@@ -5,17 +5,17 @@ import { addTodo } from '../../redux/todosSlice';
 import { useDispatch } from 'react-redux';
 
 const Form = () => {
+  const dispatch = useDispatch();
 
-  const dispatch = useDispatch()
-
-  const handleAdd = (e) => {
+  const handleAdd = e => {
     e.preventDefault();
 
     const todoText = e.target.elements.search.value.trim();
-    if(!todoText) return;
-    
-    dispatch(addTodo({id: crypto.randomUUID(), text:todoText}));
-  }
+    if (!todoText) return;
+
+    dispatch(addTodo({ id: crypto.randomUUID(), text: todoText }));
+    e.target.reset();
+  };
   return (
     <form className={style.form} onSubmit={handleAdd}>
       <button className={style.button} type="submit">

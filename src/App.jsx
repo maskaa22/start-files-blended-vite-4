@@ -5,6 +5,7 @@ import Header from './components/Header/Header';
 import Section from './components/Section/Section';
 import Text from './components/Text/Text';
 import TodoList from './components/TodoList/TodoList';
+import Filter from './components/Filter/Filter';
 
 export const App = () => {
   const todos = useSelector(state => state.todos.items);
@@ -14,6 +15,7 @@ export const App = () => {
       <Section>
         <Container>
           <Form />
+          <Filter />
           {todos.length ? (
             <TodoList />
           ) : (

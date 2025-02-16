@@ -66,7 +66,7 @@ npm install @reduxjs/toolkit react-redux redux-persist
 ```bash
 {
   todos: {  items:[] },
-  filter: '',
+  filter: { name: '' },
 }
 ```
 
