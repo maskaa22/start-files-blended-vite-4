@@ -13,7 +13,7 @@ const Form = () => {
     const todoText = e.target.elements.search.value.trim();
     if (!todoText) return;
 
-    dispatch(addTodo({ id: crypto.randomUUID(), text: todoText }));
+    dispatch(addTodo({text: todoText }));
     e.target.reset();
   };
   return (

@@ -8,9 +8,11 @@ import TodoList from './components/TodoList/TodoList';
 import Filter from './components/Filter/Filter';
 import { fetchTodos } from './redux/todosOperations';
 import { useEffect } from 'react';
+import EditForm from './components/EditForm/EditForm'
 
 export const App = () => {
   const todos = useSelector(state => state.todos.items);
+  const currentTodo = useSelector(state => state.todos.currentTodo)
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -22,7 +24,10 @@ export const App = () => {
       <Header />
       <Section>
         <Container>
-          <Form />
+          {
+            !currentTodo ? <Form /> : <EditForm />
+          }
+         
           <Filter />
           {todos.length ? (
             <TodoList />
