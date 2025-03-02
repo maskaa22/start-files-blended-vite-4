@@ -1,7 +1,7 @@
 import { FiSearch } from 'react-icons/fi';
 
 import style from './Form.module.css';
-import { addTodo } from '../../redux/todosSlice';
+import { addTodo } from '../../redux/todosOperations';
 import { useDispatch } from 'react-redux';
 
 const Form = () => {

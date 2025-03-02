@@ -1,7 +1,7 @@
 import Text from '../Text/Text';
 import style from './Todo.module.css';
 import { RiDeleteBinLine, RiEdit2Line } from 'react-icons/ri';
-import { deleteTodo } from '../../redux/todosSlice';
+import { deleteTodo } from '../../redux/todosOperations';
 import { useDispatch } from 'react-redux';
 
 const Todo = ({ todo, number }) => {
