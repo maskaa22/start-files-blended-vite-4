@@ -1,11 +1,9 @@
-import { createSlice, isAnyOf } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { fetchTodos, addTodo, deleteTodo, editTodo } from './todosOperations';
 
 const initialState = {
   items: [],
   currentTodo: null,
-  loading: false,
-  error: null,
 };
 
 const todosSlice = createSlice({
@@ -33,64 +31,7 @@ const todosSlice = createSlice({
         );
         state.items.splice(index, 1, action.payload);
         state.currentTodo = null;
-      })
-
-      // .addMatcher(
-      //   action => action.type.endsWith('pending'),
-      //   state => {
-      //     state.loading = true;
-      //     state.error = null;
-      //   },
-      // )
-      // .addMatcher(
-      //   action => action.type.endsWith('fulfilled'),
-      //   state => {
-      //     state.loading = false;
-      //   },
-      // )
-      // .addMatcher(
-      //   action => action.type.endsWith('rejected'),
-      //   (state, action) => {
-      //     state.loading = false;
-      //     state.error = action.payload;
-      //   },
-      // )
-
-      .addMatcher(
-        isAnyOf(
-          fetchTodos.pending,
-          addTodo.pending,
-          deleteTodo.pending,
-          editTodo.pending,
-        ),
-        state => {
-          state.loading = true;
-          state.error = null;
-        },
-      )
-      .addMatcher(
-        isAnyOf(
-          fetchTodos.fulfilled,
-          addTodo.fulfilled,
-          deleteTodo.fulfilled,
-          editTodo.fulfilled,
-        ),
-        state => {
-          state.loading = false;
-        },
-      )
-      .addMatcher(
-        isAnyOf(
-          fetchTodos.rejected,
-          addTodo.rejected,
-          deleteTodo.rejected,
-          editTodo.rejected,
-        ),
-        (state, action) => {
-          state.loading = false;
-          state.error = action.payload;
-        },
-      );
+      });
   },
 });
 export const { setCurrentTodo } = todosSlice.actions;
